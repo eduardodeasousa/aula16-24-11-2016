@@ -13,7 +13,7 @@ import javax.swing.table.TableModel;
 
 
 class PessoaTableModel extends AbstractTableModel {
-    Connection conexao;
+    private final Connection conexao;
     List<Pessoa> pessoas;
     
     public PessoaTableModel(Connection conexao) {
@@ -52,20 +52,14 @@ class PessoaTableModel extends AbstractTableModel {
              
              String nome = resultado.getString(1);
              String telefone = resultado.getString(2);
-             if (l++ == rowIndex)
-                switch(columnIndex){
-                    case 0: return nome;
-                    case 1: return telefone;
-                    default: return "naosei";
-                }
+             pessoas.add(new Pessoa(nome,telefone));
          }
         }
         catch (SQLException ex)
         {
             System.err.println(ex);
         }
-        return null;
-    
+       
    }
 
     @Override
