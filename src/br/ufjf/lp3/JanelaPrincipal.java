@@ -115,6 +115,10 @@ public class JanelaPrincipal extends javax.swing.JFrame {
             operacao.executeUpdate("INSERT INTO pessoa(nome, telefone) VALUES('"
                     +jTextField1.getText() +"','"
                     +jTextField2.getText()+ "')");
+            jTextField1.setText("");
+            jTextField2.setText("");
+            tblPessoal.updateUI();
+            jTextField1.requestFocus();
         }
         catch (SQLException ex)
         {
